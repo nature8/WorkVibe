@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #jobListings {
+            width: 90%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .job-listing {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .job-detail {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .job-detail label {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Job Listings</h1>
+    <div id="jobListings"></div>
+
+    <script>
+        // Retrieve job listings from localStorage
+        const jobListings = JSON.parse(localStorage.getItem("jobListings")) || [];
+
+        const jobListingsContainer = document.getElementById("jobListings");
+
+        jobListings.forEach((job, index) => {
+            const jobListing = document.createElement("div");
+            jobListing.className = "job-listing";
+
+            jobListing.innerHTML = `
+                <div class="job-detail">
+                    <label>Job Title:</label> <span>${job.title}</span>
+                </div>
+                <div class="job-detail">
+                    <label>Programming Languages:</label> <span>${job.languages}</span>
+                </div>
+                <div class="job-detail">
+                    <label>Job Requirements:</label> <span>${job.requirements}</span>
+                </div>
+                <div class="job-detail">
+                    <label>Required Experience:</label> <span>${job.experience}</span>
+                </div>
+                <div class="job-detail">
+                    <label>Office Location:</label> <span>${job.location}</span>
+                </div>
+            `;
+
+            jobListingsContainer.appendChild(jobListing);
+        });
+    </script>
+</body>
+
+</html>

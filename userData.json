@@ -1,0 +1,82 @@
+[
+    {
+        "username": "bob_smith",
+        "email": "bob.smith@example.com",
+        "phoneNumber": "8765432109",
+        "location": "San Francisco",
+        "college": "Stanford University",
+        "password": "bob@456",
+        "skills": ["Java", "C++", "Spring", "Hibernate", "AWS"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/bob_smith",
+            "instagram": "https://instagram.com/bob_smith",
+            "twitter": "https://twitter.com/bob_smith",
+            "github": "https://github.com/bob_smith",
+            "linkedin": "https://linkedin.com/in/bob_smith"
+        }
+    },
+    {
+        "username": "Harshvardhan",
+        "email": "harshvardhanchaudhari96@gmail.com",
+        "phoneNumber": "9359724517",
+        "location": "shevgoan",
+        "college": "New Art Commerce Science College Shevgoan",
+        "password": "harshu",
+        "skills": ["Html","Css","JavaScript", "Bootstrap", "React.js", "Java", "C ", "C++", "DSA" ],
+        "socialLinks": {
+            "facebook": "https://facebook.com",
+            "instagram": "https://instagram.com",
+            "twitter": "https://twitter.com",
+            "github": "https://github.com",
+            "linkedin": "https://linkedin.com"
+        }
+    },
+    {
+        "username": "Sakshi",
+        "email": "sakshishinde0671@gmail.com",
+        "phoneNumber": "9370920671",
+        "location": "shevgoan",
+        "college": "New Art Commerce Science College Shevgoan",
+        "password": "sakshi",
+        "skills": ["JavaScript", "Java", "PHP", "Swift", "Go", "TypeScript", "Kotlin"],
+        "socialLinks": {
+            "facebook": "https://www.facebook.com/",
+            "instagram": "https://www.instagram.com/",
+            "twitter": "https://x.com/i/flow/login",
+            "github": "https://github.com/SAKSHI-7662",
+            "linkedin": "www.linkedin.com/in/shinde-sakshi-4b249a332"
+        }
+    },
+    {
+        "username": "Prakruti",
+        "email": "ptailor1008@gmail.com",
+        "phoneNumber": "7440321104",
+        "location": "Indore",
+        "college": "Shri Vaishnav Vidyapeeth Vishwavidyalaya",
+        "password": "pRak",
+        "skills": ["Html","Css", "Bootstrap","React.js", "Java", "C++", "DSA" ],
+        "socialLinks": {
+            "facebook": "https://facebook.com",
+            "instagram": "https://instagram.com",
+            "twitter": "https://twitter.com",
+            "github": "https://github.com/nature8",
+            "linkedin": "https://linkedin.com"
+        }
+    },
+    {
+        "username": "yogesh",
+        "email": "yogeshkharat82970@gmail.com",
+        "phoneNumber": "8999978343",
+        "location": "shevgoan",
+        "college": "New Art Commerce Science College Shevgoan",
+        "password": "yogesh",
+        "skills": ["JavaScript", "Python", "Java", "C++", "Ruby", "PHP", "Swift", "Go", "TypeScript", "Kotlin"],
+        "socialLinks": {
+            "facebook": "https://facebook.com",
+            "instagram": "https://instagram.com",
+            "twitter": "https://twitter.com",
+            "github": "https://github.com",
+            "linkedin": "https://linkedin.com"
+        }
+    }
+]

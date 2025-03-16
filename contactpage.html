@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .contact-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            text-align: left;
+        }
+
+        .contact-form label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            font-size: 24px;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #1900ff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .contact-container {
+                width: 90%;
+            }
+
+            .social-icons {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to us!</p>
+
+        <div class="contact-form">
+            <form id="contactForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" rows="4" placeholder="Your message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <div class="social-links">
+            <h3>Connect with Us</h3>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            // Format the message for SMS
+            const formattedMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+
+            // Phone number to send the SMS to
+            const phoneNumber = "8999978343"; // Replace with your phone number
+
+            // Check if the user is on a mobile device
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // SMS URI scheme for mobile devices
+                const smsUrl = `sms:${phoneNumber}?body=${formattedMessage}`;
+
+                // Open the default SMS app
+                window.location.href = smsUrl;
+            } else {
+                // Display a message or redirect for desktop users
+                alert("Please use a mobile device to send an SMS.");
+                // Alternatively, you can redirect to another page:
+                // window.location.href = "desktop-contact.html";
+            }
+
+            // Optional: Clear the form after submission
+            document.getElementById("contactForm").reset();
+        });
+    </script>
+</body>
+</html>

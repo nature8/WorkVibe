@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Login</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #main {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            #main {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }a{
+            color: wheat;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form method="get" id="main" onsubmit="handleLogin(event)">
+        <h1>Company Login</h1>
+
+        <input type="text" id="companyname" placeholder="Enter Company Name" required>
+        <input type="password" id="password" placeholder="Enter Password" required>
+
+        <button type="submit">Login</button>
+        <label for="">if you have no Account the registration</label>
+        <button id="button1"><a href="company_registration.html.html" target="_blank">Sign In Admin</a></button>
+    </form>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            const companyName = document.getElementById("companyname").value;
+            const password = document.getElementById("password").value;
+
+            // Fetch company data from companydata.json
+            fetch('companydata.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Find the company with matching credentials
+                    const company = data.find(
+                        company => company.companyname === companyName && company.password === password
+                    );
+
+                    if (company) {
+                        // Store the logged-in company's data in localStorage
+                        localStorage.setItem('currentUser', JSON.stringify(company));
+
+                        // Redirect to admin page if credentials are valid
+                        alert("Login successful!");
+                        window.location.href = "admin.html";
+                    } else {
+                        // Show error message if credentials are invalid
+                        alert("Invalid company name or password!");
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    </script>
+</body>
+
+</html>

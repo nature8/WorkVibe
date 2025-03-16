@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #main {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        input[type="password"],
+        textarea,
+        select,
+        input[type="file"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 60px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            input[type="date"],
+            input[type="password"],
+            textarea,
+            select,
+            input[type="file"] {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            #main {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            input[type="date"],
+            input[type="password"],
+            textarea,
+            select,
+            input[type="file"] {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form method="get" id="main" onsubmit="redirectToProfile(event)">
+        <h1>College/Institute Registration Form</h1>
+        <input type="text" id="input3" placeholder="Enter your full name" required>
+        <input type="text" id="input1" placeholder="Enter College/Institute Name" required>
+        <input type="text" id="input2" placeholder="Enter Your Location" required>
+        
+        <input type="email" id="input4" placeholder="Enter your email" required>
+        
+        <input type="number" id="input5" placeholder="Enter your number" required>
+        <LAbel>Enter your date of birth</LAbel>
+        <input type="date" id="input9" placeholder="Enter your date of birth" required>
+        <input type="password" id="input7" placeholder="Enter strong password" required>
+        <input type="password" id="input8" placeholder="Confirm password" required>
+
+        <label for="skills">Your Skills</label>
+        <textarea id="skills" placeholder="Enter your skills (e.g., HTML, CSS, JavaScript)" required></textarea>
+
+        <label for="resume">Upload Your Resume</label>
+        <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
+
+        <label for="instituteType">Select Institute Type</label>
+        <select id="instituteType" name="instituteType" required>
+            <option value="school">School</option>
+            <option value="college">College</option>
+            <option value="university">University</option>
+            <option value="training">Training Institute</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="instituteDescription">Institute Description</label>
+        <textarea id="instituteDescription" placeholder="Enter institute description" required></textarea>
+
+        <label for="facebook">Facebook Link</label>
+        <input type="text" id="facebook" placeholder="Enter Facebook link">
+
+        <label for="instagram">Instagram Link</label>
+        <input type="text" id="instagram" placeholder="Enter Instagram link">
+
+        <label for="twitter">Twitter Link</label>
+        <input type="text" id="twitter" placeholder="Enter Twitter link">
+
+        <label for="linkedin">LinkedIn Link</label>
+        <input type="text" id="linkedin" placeholder="Enter LinkedIn link">
+
+        <label for="github">GitHub Link</label>
+        <input type="text" id="github" placeholder="Enter GitHub link">
+
+        <button type="submit">log in</button>
+    </form>
+
+    <script>
+        function redirectToProfile(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Validate passwords
+            const password = document.getElementById("input7").value;
+            const confirmPassword = document.getElementById("input8").value;
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById("input1").value,
+                location: document.getElementById("input2").value,
+                contactPerson: document.getElementById("input3").value,
+                email: document.getElementById("input4").value,
+                phoneNumber: document.getElementById("input5").value,
+                dateOfBirth: document.getElementById("input9").value,
+                skills: document.getElementById("skills").value,
+                resume: document.getElementById("resume").files[0]?.name || "No file uploaded",
+                instituteType: document.getElementById("instituteType").value,
+                description: document.getElementById("instituteDescription").value,
+                facebook: document.getElementById("facebook").value,
+                instagram: document.getElementById("instagram").value,
+                twitter: document.getElementById("twitter").value,
+                linkedin: document.getElementById("linkedin").value,
+                github: document.getElementById("github").value,
+            };
+
+            // Convert data to URL parameters
+            const params = new URLSearchParams(formData).toString();
+
+            // Redirect to profile page with data
+            window.location.href = `home.html?${params}`;
+        }
+    </script>
+</body>
+
+</html>

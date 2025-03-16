@@ -1,0 +1,178 @@
+[
+    {
+        "companyname": "Tata Consultancy Services (TCS)",
+        "email": "tcs@1232.com",
+        "phoneNumber": "8765432109",
+        "location": "Pune",
+        "college": "Stanford University",
+        "password": "tcs@456",
+        "skills": ["Java", "Python", "PHP", "Front-end"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/tcs",
+            "instagram": "https://instagram.com/tcs",
+            "twitter": "https://twitter.com/tcs",
+            "github": "https://github.com/tcs",
+            "linkedin": "https://linkedin.com/in/tcs"
+        }
+    },
+    {
+        "companyname": "Wipro",
+        "email": "wipro@1232.com",
+        "phoneNumber": "8765432110",
+        "location": "Bangalore",
+        "college": "Harvard University",
+        "password": "wipro@456",
+        "skills": ["IT Services", "Business Services", "Digital Services", "Engineering Services"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/wipro",
+            "instagram": "https://instagram.com/wipro",
+            "twitter": "https://twitter.com/wipro",
+            "github": "https://github.com/wipro",
+            "linkedin": "https://linkedin.com/in/wipro"
+        }
+    },
+    {
+        "companyname": "Union Public Service Commission (UPSC)",
+        "email": "upsc@1232.com",
+        "phoneNumber": "8765432111",
+        "location": "Delhi",
+        "college": "Oxford University",
+        "password": "upsc@456",
+        "skills": ["Class 1", "Class 2", "Class 3", "Class 4"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/upsc",
+            "instagram": "https://instagram.com/upsc",
+            "twitter": "https://twitter.com/upsc",
+            "github": "https://github.com/upsc",
+            "linkedin": "https://linkedin.com/in/upsc"
+        }
+    },
+    {
+        "companyname": "Indian Army",
+        "email": "indianarmy@1232.com",
+        "phoneNumber": "8765432112",
+        "location": "All India",
+        "college": "Military Academy",
+        "password": "army@456",
+        "skills": ["Medical Field", "IT Field", "Engineering Field", "Logistics Field"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/indianarmy",
+            "instagram": "https://instagram.com/indianarmy",
+            "twitter": "https://twitter.com/indianarmy",
+            "github": "https://github.com/indianarmy",
+            "linkedin": "https://linkedin.com/in/indianarmy"
+        }
+    },
+    {
+        "companyname": "State Bank Of India (SBI)",
+        "email": "sbi@1232.com",
+        "phoneNumber": "8765432113",
+        "location": "Mumbai",
+        "college": "London School of Economics",
+        "password": "sbi@456",
+        "skills": ["Clerk", "Probationary Officer", "Specialist Officer", "Accountants Officer"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/sbi",
+            "instagram": "https://instagram.com/sbi",
+            "twitter": "https://twitter.com/sbi",
+            "github": "https://github.com/sbi",
+            "linkedin": "https://linkedin.com/in/sbi"
+        }
+    },
+    {
+        "companyname": "Doctor",
+        "email": "doctor@1232.com",
+        "phoneNumber": "8765432114",
+        "location": "Maharashtra",
+        "college": "Harvard Medical School",
+        "password": "doctor@456",
+        "skills": ["General Practitioners", "Specialists", "Clinic Doctors", "Hospital Doctors"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/doctor",
+            "instagram": "https://instagram.com/doctor",
+            "twitter": "https://twitter.com/doctor",
+            "github": "https://github.com/doctor",
+            "linkedin": "https://linkedin.com/in/doctor"
+        }
+    },
+    {
+        "companyname": "Teacher",
+        "email": "teacher@1232.com",
+        "phoneNumber": "8765432115",
+        "location": "Maharashtra",
+        "college": "Cambridge University",
+        "password": "teacher@456",
+        "skills": ["Elementary", "Middle School", "High School", "Specializations"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/teacher",
+            "instagram": "https://instagram.com/teacher",
+            "twitter": "https://twitter.com/teacher",
+            "github": "https://github.com/teacher",
+            "linkedin": "https://linkedin.com/in/teacher"
+        }
+    },
+    {
+        "companyname": "Google",
+        "email": "google@1232.com",
+        "phoneNumber": "8765432116",
+        "location": "USA",
+        "college": "Stanford University",
+        "password": "google@456",
+        "skills": ["Software Engineering", "Data Science", "Product Management", "Marketing"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/google",
+            "instagram": "https://instagram.com/google",
+            "twitter": "https://twitter.com/google",
+            "github": "https://github.com/google",
+            "linkedin": "https://linkedin.com/in/google"
+        }
+    },
+    {
+        "companyname": "Business Development",
+        "email": "business@1232.com",
+        "phoneNumber": "8765432117",
+        "location": "Maharashtra",
+        "college": "Wharton School",
+        "password": "business@456",
+        "skills": ["Manager", "Business Development", "Executive", "Specialist"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/business",
+            "instagram": "https://instagram.com/business",
+            "twitter": "https://twitter.com/business",
+            "github": "https://github.com/business",
+            "linkedin": "https://linkedin.com/in/business"
+        }
+    },
+    {
+        "companyname": "Maharashtra Public Service Commission (MPSC)",
+        "email": "mpsc@1232.com",
+        "phoneNumber": "8765432118",
+        "location": "Maharashtra",
+        "college": "University of Mumbai",
+        "password": "mpsc@456",
+        "skills": ["Group A", "Group B", "Group C", "Group D"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/mpsc",
+            "instagram": "https://instagram.com/mpsc",
+            "twitter": "https://twitter.com/mpsc",
+            "github": "https://github.com/mpsc",
+            "linkedin": "https://linkedin.com/in/mpsc"
+        }
+    },
+    {
+        "companyname": "Amazon",
+        "email": "amazon@1232.com",
+        "phoneNumber": "8765432119",
+        "location": "Telangana",
+        "college": "MIT",
+        "password": "amazon@456",
+        "skills": ["Sortation Center", "Delivery Station", "Amazon Air", "Grocery Warehouses"],
+        "socialLinks": {
+            "facebook": "https://facebook.com/amazon",
+            "instagram": "https://instagram.com/amazon",
+            "twitter": "https://twitter.com/amazon",
+            "github": "https://github.com/amazon",
+            "linkedin": "https://linkedin.com/in/amazon"
+        }
+    }
+]

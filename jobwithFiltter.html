@@ -1,0 +1,746 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Filter and Listing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .filter-sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #F2F2F2;
+            padding: 20px;
+            border-right: 3px solid #928787;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .clear-all {
+            cursor: pointer;
+            text-decoration: none;
+            align-self: center;
+            margin-left: auto;
+            color: #6c757d;
+        }
+
+        .filter-section {
+            margin-top: 20px;
+        }
+
+        .filter-section h6 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .filter-section input,
+        .filter-section select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .job-listings {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .card {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid blue;
+            box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(0) scale(1.02);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+        }
+
+        .header img {
+            border-radius: 30%;
+            margin-right: 15px;
+            width: 60px;
+        }
+
+        .header-text h2 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .header-text .sub-text {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .details p {
+            display: inline-block;
+            color: #3c3c3c;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            margin-top: 15px;
+            margin-right: 5px;
+        }
+
+        .tags span {
+            display: inline-block;
+            background-color: #eef1f5;
+            color: #555;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .footer .enrolled {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .footer .deadline {
+            font-size: 0.9rem;
+            color: #f44336;
+        }
+
+        .footer button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .footer button:hover {
+            background-color: darkblue;
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .filter-sidebar {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                z-index: 1000;
+            }
+
+            .filter-sidebar.active {
+                transform: translateX(250px);
+            }
+
+            .filter-icon {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                cursor: pointer;
+                font-size: 24px;
+                color: blue;
+            }
+
+            .job-listings {
+                margin-top: 60px;
+            }
+        }
+
+        .filter-icon {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="filter-icon" onclick="toggleFilter()">
+        <i class='bx bx-filter'></i>
+    </div>
+
+   
+    <div class="filter-sidebar" id="filterSidebar">
+        <div class="filter-header">
+            <span><b>FILTERS</b></span>
+            <span class="clear-all" onclick="clearFilters()">Clear all</span>
+        </div>
+        <div class="filter-section">
+            <h6>Salary Range</h6>
+            <input type="text" class="form-control mb-2" placeholder="Min" id="minSalary">
+            <input type="text" class="form-control" placeholder="Max" id="maxSalary">
+        </div>
+        <div class="filter-section">
+            <h6>Select Job Type</h6>
+            <select class="form-select" id="jobType">
+                <option>Select Job Type</option>
+                <option>Full-Time</option>
+                <option>Part-Time</option>
+                <option>Internship</option>
+                <option>Contract</option>
+            </select>
+        </div>
+        <div class="filter-section">
+            <h6>Select Location</h6>
+            <select class="form-select" id="location">
+                <option>Select Location</option>
+                <option>All India</option>
+                <option>Maharashtra</option>
+                <option>Telangana</option>
+                <option>USA</option>
+            </select>
+        </div>
+        <div class="filter-section">
+            <h6>Select Experience Level</h6>
+            <select class="form-select" id="experience">
+                <option>Select Experience Level</option>
+                <option>Fresher/Entry-Level</option>
+                <option>Junior</option>
+                <option>Mid-Level</option>
+                <option>Senior</option>
+            </select>
+        </div>
+        <div class="filter-section">
+            <h6>Select Education</h6>
+            <select class="form-select" id="education">
+                <option>Select Education</option>
+                <option>Any Postgraduate</option>
+                <option>MCA</option>
+                <option>B.Tech/B.E.</option>
+                <option>Any Graduate</option>
+            </select>
+        </div>
+        <button class="btn btn-primary w-100 mt-3" onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    
+    <div class="job-listings" id="jobListings">
+        <!-- Job cards will be dynamically populated here 
+    </div>
+
+    <script>
+       
+        const jobs = [
+            {
+                company: "Tata Consultancy Services (TCS)",
+                logo: "download.jpg",
+                type: "Full-Time",
+                location: "All India",
+                experience: "Fresher/Entry-Level",
+                education: "Any Graduate",
+                tags: ["Java", "Python", "PHP", "Front-end"],
+                enrolled: 7911,
+                deadline: "16 Mar, 07:00 pm"
+            },
+            {
+                company: "Wipro",
+                logo: "images.png",
+                type: "Full-Time",
+                location: "India",
+                experience: "Fresher/Entry-Level",
+                education: "Any Graduate",
+                tags: ["IT Services", "Business Services", "Digital Services", "Engineering Services"],
+                enrolled: 7912,
+                deadline: "30 Mar, 10:00 pm"
+            },
+            {
+                company: "Google",
+                logo: "download (3).jpg",
+                type: "Full-Time",
+                location: "USA",
+                experience: "Mid-Level",
+                education: "B.Tech/B.E.",
+                tags: ["Software Engineering", "Data Science", "Product Management", "Marketing"],
+                enrolled: 7009,
+                deadline: "29 Mar, 12:00 pm"
+            },
+            {
+                company: "Amazon",
+                logo: "download (3).png",
+                type: "Full-Time",
+                location: "Telangana",
+                experience: "Fresher/Entry-Level",
+                education: "Any Graduate",
+                tags: ["Sortation Center", "Delivery Station", "Amazon Air", "Grocery Warehouses"],
+                enrolled: 8911,
+                deadline: "16 Mar, 07:00 pm"
+            },
+            {
+                company: "State Bank Of India (SBI)",
+                logo: "download.png",
+                type: "Full-Time",
+                location: "India",
+                experience: "Graduation",
+                education: "Any Graduate",
+                tags: ["Clerk", "Probationary Officer", "Specialist Officer", "Accountants Officer"],
+                enrolled: 7001,
+                deadline: "30 Mar, 12:00 pm"
+            }
+        ];
+
+        function renderJobs(filteredJobs) {
+            const jobListings = document.getElementById("jobListings");
+            jobListings.innerHTML = "";
+
+            filteredJobs.forEach(job => {
+                const card = `
+                    <div class="card">
+                        <div class="header">
+                            <img src="${job.logo}" alt="Logo">
+                            <div class="header-text">
+                                <h2>${job.company}</h2>
+                                <p class="sub-text">Job Campus</p>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <p><strong>Job Type:</strong> ${job.type}</p>
+                            <p><strong><i class='bx bxs-graduation'></i></strong>${job.experience}</p>
+                            <p><strong><a href="#"><i class='bx bx-map'></i></a></strong>${job.location}</p>
+                        </div>
+                        <div class="tags">
+                            ${job.tags.map(tag => `<span>#${tag}</span>`).join("")}
+                        </div>
+                        <div class="footer">
+                            <p class="enrolled">${job.enrolled} Enrolled</p>
+                            <button><center>Learn More</center></button>
+                            <p class="deadline">Reg. closes on ${job.deadline}</p>
+                        </div>
+                    </div>
+                `;
+                jobListings.innerHTML += card;
+            });
+        }
+
+       
+        function applyFilters() {
+            const minSalary = document.getElementById("minSalary").value;
+            const maxSalary = document.getElementById("maxSalary").value;
+            const jobType = document.getElementById("jobType").value;
+            const location = document.getElementById("location").value;
+            const experience = document.getElementById("experience").value;
+            const education = document.getElementById("education").value;
+
+            const filteredJobs = jobs.filter(job => {
+                return (
+                    (jobType === "Select Job Type" || job.type === jobType) &&
+                    (location === "Select Location" || job.location === location) &&
+                    (experience === "Select Experience Level" || job.experience === experience) &&
+                    (education === "Select Education" || job.education === education)
+                );
+            });
+
+            renderJobs(filteredJobs);
+        }
+
+       
+        function clearFilters() {
+            document.getElementById("minSalary").value = "";
+            document.getElementById("maxSalary").value = "";
+            document.getElementById("jobType").selectedIndex = 0;
+            document.getElementById("location").selectedIndex = 0;
+            document.getElementById("experience").selectedIndex = 0;
+            document.getElementById("education").selectedIndex = 0;
+            renderJobs(jobs); // Render all jobs when filters are cleared
+        }
+
+       
+        function toggleFilter() {
+            const filterSidebar = document.getElementById("filterSidebar");
+            filterSidebar.classList.toggle("active");
+        }
+
+      
+        document.addEventListener("click", (event) => {
+            const filterSidebar = document.getElementById("filterSidebar");
+            const filterIcon = document.querySelector(".filter-icon");
+
+            if (!filterSidebar.contains(event.target) && !filterIcon.contains(event.target)) {
+                filterSidebar.classList.remove("active");
+            }
+        });
+
+      
+        renderJobs(jobs);
+    </script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        body {
+            font-family: Times New Roman, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        .filter-sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color:rgb(255, 255, 255);
+            padding: 20px;
+            border: 2px solid rgb(12, 7, 177);
+            border-radius: 13px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            margin-top: 40px;
+            margin-left: 30px;
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .clear-all {
+            cursor: pointer;
+            text-decoration: none;
+            align-self: center;
+            margin-left: auto;
+            color: #6c757d;
+        }
+
+        .filter-section {
+            margin-top: 20px;
+        }
+
+        .filter-section h6 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .filter-section input,
+        .filter-section select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .job-listings {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .card {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid blue;
+            box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(0) scale(1.02);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+        }
+
+        .header img {
+            border-radius: 30%;
+            margin-right: 15px;
+            width: 60px;
+        }
+
+        .header-text h2 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .header-text .sub-text {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .details p {
+            display: inline-block;
+            color: #3c3c3c;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            margin-top: 15px;
+            margin-right: 5px;
+        }
+
+        .tags span {
+            display: inline-block;
+            background-color: #eef1f5;
+            color: #555;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .footer .enrolled {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .footer .deadline {
+            font-size: 0.9rem;
+            color: #f44336;
+        }
+
+        .footer button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .footer button:hover {
+            background-color: darkblue;
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .filter-sidebar {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                z-index: 1000;
+            }
+
+            .filter-sidebar.active {
+                transform: translateX(250px);
+            }
+
+            .filter-icon {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                cursor: pointer;
+                font-size: 24px;
+                color: blue;
+            }
+
+            .job-listings {
+                margin-top: 60px;
+            }
+        }
+
+        .filter-icon {
+            display: none;
+        }
+
+        
+        .job-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Aligns cards to the right */
+            justify-content: flex-end;
+            gap: 20px;
+            padding-right: 20px; /* Adds some spacing from the right */
+            margin-top: 40px;
+            margin-left: 20px;
+        }
+        .job-card {
+            width: 70vw;
+            
+            background: white;
+            border: 2px solid rgb(15, 31, 215);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .job-card:hover {
+            transform: scale(1.02);
+        }
+        .job-card h3 {
+            margin: 0;
+            font-size: 22px;
+            color: #007bff;
+        }
+        .job-card p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .tag {
+            display: inline-block;
+            padding: 5px 8px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        .apply-btn {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 15px auto 0;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .apply-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="filter-icon" onclick="toggleFilter()">
+        <i class='bx bx-filter'></i>
+    </div>
+
+    <!-- Filter Sidebar -->
+    <div class="filter-sidebar" id="filterSidebar">
+        <div class="filter-header">
+            <span><b>FILTERS</b></span>
+            <span class="clear-all" onclick="clearFilters()">Clear all</span>
+        </div>
+        <div class="filter-section">
+            <h6>Salary Range</h6>
+            <input type="text" class="form-control mb-2" placeholder="Min" id="minSalary">
+            <input type="text" class="form-control" placeholder="Max" id="maxSalary">
+        </div>
+        <div class="filter-section">
+            <h6>Select Job Type</h6>
+            <select class="form-select" id="jobType">
+                <option>Select Job Type</option>
+                <option>Full-Time</option>
+                <option>Part-Time</option>
+                <option>Internship</option>
+                <option>Contract</option>
+            </select>
+        </div>
+        <div class="filter-section">
+            <h6>Select Location</h6>
+            <select class="form-select" id="location">
+                <option>Select Location</option>
+                <option>All India</option>
+                <option>Maharashtra</option>
+                <option>Telangana</option>
+                <option>USA</option>
+            </select>
+        </div>
+        <div class="filter-section">
+            <h6>Select Experience Level</h6>
+            <select class="form-select" id="experience">
+                <option>Select Experience Level</option>
+                <option>Fresher/Entry-Level</option>
+                <option>Junior</option>
+                <option>Mid-Level</option>
+                <option>Senior</option>
+            </select>
+        </div>
+        <div class="filter-section">
+            <h6>Select Education</h6>
+            <select class="form-select" id="education">
+                <option>Select Education</option>
+                <option>Any Postgraduate</option>
+                <option>MCA</option>
+                <option>B.Tech/B.E.</option>
+                <option>Any Graduate</option>
+            </select>
+        </div>
+        <button class="apply-btn" onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <!--Job listing-->
+
+    <div class="job-container" id="jobList"></div>
+
+    <script>
+        async function fetchJobs() {
+            try {
+                const response = await fetch("http://localhost:8080/api/jobs/all");
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+                const jobs = await response.json();
+                const jobContainer = document.getElementById("jobList");
+                jobContainer.innerHTML = "";
+
+                jobs.forEach(job => {
+                    const jobCard = document.createElement("div");
+                    jobCard.classList.add("job-card");
+
+                    jobCard.innerHTML = `
+                        <p><strong>ID:</strong> ${job.id}</p>
+                        <h3>${job.title}</h3>
+                        <p><strong>Languages:</strong> ${job.languages.split(',').map(lang => `<span class="tag">${lang.trim()}</span>`).join(" ")}</p>
+                        <p><strong>Requirements:</strong> ${job.requirements}</p>
+                        <p><strong>Experience:</strong> ${job.experience}</p>
+                        <p><strong>Location:</strong> ${job.location}</p>
+                        <p><strong>Last Date to Apply:</strong> ${job.lastDateToApply}</p>
+                        <a href="#" class="apply-btn">Apply Now</a>
+                    `;
+                    
+                    jobContainer.appendChild(jobCard);
+                });
+            } catch (error) {
+                console.error("Error fetching jobs:", error);
+            }
+        }
+
+        window.onload = fetchJobs;
+    </script>
+</body>
+</html>
