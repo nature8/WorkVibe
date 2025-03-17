@@ -366,7 +366,7 @@
         }
 
         // Handle job form submission
-        document.getElementById("jobInputForm").addEventListener("submit", function (event) {
+       /* document.getElementById("jobInputForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
             const jobDetails = {
@@ -395,7 +395,45 @@
 
             // Update the job listings display
             showJobListings();
+        });*/
+
+        document.getElementById("jobInputForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+        
+            const jobDetails = {
+                title: document.getElementById("jobTitle").value.trim(),
+                languages: document.getElementById("jobLanguages").value.trim(),
+                requirements: document.getElementById("jobRequirements").value.trim(),
+                experience: document.getElementById("userExperience").value.trim(),
+                location: document.getElementById("officeLocation").value.trim(),
+                lastDateToApply: document.getElementById("lastDateToApply").value
+            };
+        
+            fetch("http://localhost:8080/api/jobs/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(jobDetails)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to add job.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert("Job added successfully!");
+                document.getElementById("jobInputForm").reset();
+                
+                // Redirect to jobswithfiltter.html after successful insertion
+                window.location.href = "jobwithfiltter.html";
+            })
+            .catch(error => {
+                console.error("Error adding job:", error);
+                alert("An error occurred while adding the job. Please try again.");
+            });
         });
+        
+
 
         // Function to save job data to a JSON file
         function saveJobDataToJSON(jobListings) {
