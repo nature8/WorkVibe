@@ -9,6 +9,8 @@
              body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            /* background: rgb(88, 88, 211); */
+            /* background-image: url(https://img.freepik.com/premium-photo/dark-blue-grunge-texture-wall-background_148157-298.jpg?semt=ais_hybrid); */
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,6 +21,9 @@
 
         #main {
             background-color: #fff;
+            /* background-color: transparent 50%; */
+            /* background: rgb(88, 88, 211); */
+            /* background-image: url(https://img.freepik.com/premium-photo/dark-blue-grunge-texture-wall-background_148157-298.jpg?semt=ais_hybrid); */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -116,13 +121,17 @@
                 padding: 6px 12px;
             }
         }
+        a{
+            color: white;
+        }
     </style>
 
 </head>
 
 <body>
     <form method="get" id="main" onsubmit="handleRegistration(event)">
-        <h1>Company Registration Form</h1>
+        <h1>Company Registration Form</h1>  <label for=""> if you have  log in </label>
+        <button id="button2"><a href="admin.html">log in</a></button>
 
         <input type="text" id="input1" placeholder="Enter Company Name" required>
         <input type="text" id="input2" placeholder="Enter Company Location" required>
@@ -162,7 +171,7 @@
         <label for="hu">Comment here</label>
         <textarea id="hu" placeholder="Enter your comments"></textarea>
 
-        <button type="submit">Register</button>
+        <button type="submit">log in</button>
     </form>
 
     <script>

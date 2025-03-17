@@ -203,7 +203,6 @@
 </head>
 <body>
     <div id="navbar">
-       <button id="button1"><a href="login.html">Login</a></button>
         <button onclick="showProfile()">Profile</button>
         <button onclick="showJobListings()">Job Listings</button>
         <button onclick="showJobForm()">Add New Job Requirement</button>
@@ -256,7 +255,7 @@
         <!-- Job Input Form Section -->
         <div id="jobFormContainer">
             <h1>Job Input Form</h1>
-            <form id="jobInputForm" >
+            <form id="jobInputForm">
                 <div class="form-group">
                     <label for="jobTitle">Job Title:</label>
                     <input type="text" id="jobTitle" name="jobTitle" required>
@@ -433,7 +432,7 @@
             showJobListings();
         });*/
 
-       /*document.getElementById("jobInputForm").addEventListener("submit", function (event) {
+        document.getElementById("jobInputForm").addEventListener("submit", function (event) {
             event.preventDefault();
         
             const jobDetails = {
@@ -457,42 +456,6 @@
                 showJobListings(); // Refresh job listings
             })
             .catch(error => console.error("Error adding job:", error));
-        });*/
-
-        document.getElementById("jobInputForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-        
-            const jobDetails = {
-                title: document.getElementById("jobTitle").value.trim(),
-                languages: document.getElementById("jobLanguages").value.trim(),
-                requirements: document.getElementById("jobRequirements").value.trim(),
-                experience: document.getElementById("userExperience").value.trim(),
-                location: document.getElementById("officeLocation").value.trim(),
-                lastDateToApply: document.getElementById("lastDateToApply").value
-            };
-        
-            fetch("http://localhost:8080/api/jobs/add", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(jobDetails)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Failed to add job.");
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert("Job added successfully!");
-                document.getElementById("jobInputForm").reset();
-                
-                // Redirect to jobswithfiltter.html after successful insertion
-                window.location.href = "jobwithfiltter.html";
-            })
-            .catch(error => {
-                console.error("Error adding job:", error);
-                alert("An error occurred while adding the job. Please try again.");
-            });
         });
         
 

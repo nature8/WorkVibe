@@ -9,6 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            /* background: rgb(88, 88, 211); */
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,6 +20,7 @@
 
         #main {
             background-color: #fff;
+            /* background: rgb(88, 88, 211); */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -119,12 +121,14 @@
                 padding: 6px 12px;
             }
         }
+        a{color: white;}
     </style>
 </head>
 
 <body>
     <form method="get" id="main" onsubmit="redirectToProfile(event)">
         <h1>College/Institute Registration Form</h1>
+        <button type="submit"><a href="login.html">Log in</a></button> 
         <input type="text" id="input3" placeholder="Enter your full name" required>
         <input type="text" id="input1" placeholder="Enter College/Institute Name" required>
         <input type="text" id="input2" placeholder="Enter Your Location" required>
