@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -214,4 +214,189 @@
     </script>
 </body>
 
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: rgba(0, 0, 0, 0.7) url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjEwMTYtYy0wOF8xLWtzaDZtemEzLmpwZw.jpg') no-repeat center center/cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Overlay to dim brightness */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        #main {
+            position: relative;
+            z-index: 2;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        input, textarea, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--<form id="main" onsubmit="handleRegistration(event)">
+        <h1>Company Registration</h1>
+        <input type="text" id="input1" placeholder="Company Name" required>
+        <input type="text" id="input2" placeholder="Company Location" required>
+        <input type="text" id="input3" placeholder="Your Full Name" required>
+        <input type="email" id="input4" placeholder="Your Email" required>
+        <input type="number" id="input5" placeholder="Your Number" required>
+        <input type="password" id="input7" placeholder="Enter Password" required>
+        <input type="password" id="input8" placeholder="Confirm Password" required>
+        
+        <label for="companyType">Company Type</label>
+        <select id="companyType" required>
+            <option value="midcap">Midcap</option>
+            <option value="largecap">Largecap</option>
+            <option value="mnc">MNC</option>
+        </select>
+        
+        <textarea id="companyDescription" placeholder="Company Description" required></textarea>
+        
+        <button type="submit">Register</button>
+    </form>-->
+
+    <form method="get" id="main" onsubmit="handleRegistration(event)">
+        <h1>Company Registration Form</h1>  <label for=""> if you have  log in </label>
+        <button id="button2"><a href="admin.html">log in</a></button>
+
+        <input type="text" id="input1" placeholder="Enter Company Name" required>
+        <input type="text" id="input2" placeholder="Enter Company Location" required>
+        <input type="text" id="input3" placeholder="Enter your full name" required>
+        <input type="email" id="input4" placeholder="Enter your email" required>
+        <input type="number" id="input5" placeholder="Enter your number" required>
+        <input type="password" id="input7" placeholder="Enter strong password" required>
+        <input type="password" id="input8" placeholder="Confirm password" required>
+
+        <label for="companyType">Select Company Type</label>
+        <select id="companyType" name="companyType" required>
+            <option value="midcap">Midcap</option>
+            <option value="largecap">Largecap</option>
+            <option value="mnc">MNC</option>
+            <option value="remot">Romot</option>
+            <option value="product base">Product Base</option>
+        </select>
+
+        <label for="companyDescription">Company Description</label>
+        <textarea id="companyDescription" placeholder="Enter company description" required></textarea>
+
+        <label for="facebook">Facebook Link</label>
+        <input type="text" id="facebook" placeholder="Enter Facebook link">
+
+        <label for="instagram">Instagram Link</label>
+        <input type="text" id="instagram" placeholder="Enter Instagram link">
+
+        <label for="twitter">Twitter Link</label>
+        <input type="text" id="twitter" placeholder="Enter Twitter link">
+
+        <label for="linkedin">LinkedIn Link</label>
+        <input type="text" id="linkedin" placeholder="Enter LinkedIn link">
+
+        <label for="github">GitHub Link</label>
+        <input type="text" id="github" placeholder="Enter GitHub link">
+
+        <label for="hu">Comment here</label>
+        <textarea id="hu" placeholder="Enter your comments"></textarea>
+
+        <button type="submit">log in</button>
+    </form>
+
+    <script>
+        /*function handleRegistration(event) {
+            event.preventDefault();
+            alert("Form Submitted Successfully!");
+        }*/
+
+        function handleRegistration(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Validate passwords
+            const password = document.getElementById("input7").value;
+            const confirmPassword = document.getElementById("input8").value;
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                companyname: document.getElementById("input1").value,
+                location: document.getElementById("input2").value,
+                contactPerson: document.getElementById("input3").value,
+                email: document.getElementById("input4").value,
+                phoneNumber: document.getElementById("input5").value,
+                companyType: document.getElementById("companyType").value,
+                description: document.getElementById("companyDescription").value,
+                socialLinks: {
+                    facebook: document.getElementById("facebook").value,
+                    instagram: document.getElementById("instagram").value,
+                    twitter: document.getElementById("twitter").value,
+                    linkedin: document.getElementById("linkedin").value,
+                    github: document.getElementById("github").value,
+                },
+                comments: document.getElementById("hu").value,
+            };
+
+            // Save data to localStorage
+            localStorage.setItem("currentUser", JSON.stringify(formData));
+
+            // Redirect to profile page
+            window.location.href = "admin.html";
+        }
+    </script>
+</body>
 </html>
